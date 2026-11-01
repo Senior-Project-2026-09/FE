@@ -52,7 +52,7 @@ export const STATEMENTS: Record<number, Statement> = {
     output: ['합이 K인 두 수의 쌍 개수를 출력해요.'], sampleIn: '6 9\n1 2 3 6 7 8\n', sampleOut: '3\n',
     starter: 'import sys\nn, k = map(int, sys.stdin.readline().split())\na = list(map(int, sys.stdin.readline().split()))\ncount = 0\nfor i in range(n):\n    for j in range(i + 1, n):\n        if a[i] + a[j] == k: count += 1\nprint(count)\n',
   }),
-  3: statement({ summary: ['카드 N장과 질의 M개가 주어져요. 각 수가 카드에 있는지 구하세요.'], tag: '이분 탐색', sampleIn: '3 2\n1 3 5\n3 4\n', sampleOut: '1 0\n' }),
+  3: statement({ summary: ['카드 N장과 질의 M개가 주어져요. 각 수가 카드에 있는지 구하세요.'], tag: '이분 탐색', sampleIn: '3 2\n1 3 5\n3 4\n', sampleOut: '1 0\n', starter: 'import sys\nfrom bisect import bisect_left\ninput = sys.stdin.readline\nn, m = map(int, input().split())\na = sorted(map(int, input().split()))\nanswer = []\nfor x in map(int, input().split()):\n    i = bisect_left(a, x)\n    answer.append(int(i < n and a[i] == x))\nprint(*answer)\n' }),
   4: statement({ summary: ['미로의 시작점에서 도착점까지 가는 최단 거리를 구하세요.'], tag: 'BFS', sampleIn: '2 2\n..\n..\n', sampleOut: '2\n' }),
   5: statement({ summary: ['수열에서 가장 긴 증가 부분 수열의 길이를 구하세요.'], tag: 'LIS', sampleIn: '6\n10 20 10 30 20 50\n', sampleOut: '4\n' }),
 };
@@ -89,6 +89,12 @@ export const ATTACK_TIMELINE: TimelineEvent[] = [
   { at: 490_000, kind: 'attack', side: 'received', label: '상대 3점 공격' },
   { at: 525_000, kind: 'cancel', side: 'received', label: '내가 1점 상쇄, 남은 2점은 4번 적용' },
 ];
+
+// 공격 점수는 상쇄 전 기준이다
+export const ATTACK_TOTALS = {
+  me: { sent: 3, received: 5, cancelled: 1 },
+  opponent: { sent: 5, received: 3, cancelled: 1 },
+};
 
 export const REPORT = {
   problemNo: 2,

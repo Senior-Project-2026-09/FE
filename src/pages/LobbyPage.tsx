@@ -77,6 +77,7 @@ export default function LobbyPage() {
               <Field label="인원" value="1:1" />
             </div>
             <button type="button" className="btn primary block" onClick={() => setDialogOpen(true)}><Icon name="plus" />방 만들기</button>
+            <p className="hint">만든 뒤 발급된 코드를 복사해 상대에게 보내면 준비가 끝나요.</p>
           </section>
 
           <form className="panel entry" onSubmit={(e) => { e.preventDefault(); if (ready) navigate(`/rooms/${code}?joined=1`); }}>

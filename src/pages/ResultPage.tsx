@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import Icon from '../components/Icon';
 import { clock } from '../components/format';
 import { Avatar, DiffChip, Panel, VerdictMark } from '../components/ui';
-import { ATTACK_TIMELINE, LANG_LABEL, ME, myScore, OPPONENT, oppScore, PROBLEM_RESULTS, REPORT, RULES, VERDICT_LABEL } from '../mock/data';
+import { ATTACK_TIMELINE, ATTACK_TOTALS, LANG_LABEL, ME, myScore, OPPONENT, oppScore, PROBLEM_RESULTS, REPORT, RULES, VERDICT_LABEL } from '../mock/data';
 
 const SPEEDUP = Math.round(REPORT.bombSec / REPORT.afterFixSec);
 const SCALE_MAX = 6;
@@ -42,7 +42,6 @@ function Timeline() {
 
 export default function ResultPage() {
   const { matchId = '' } = useParams();
-  const received = PROBLEM_RESULTS.reduce((s, p) => s + p.received, 0);
 
   return (
     <div className="page-narrow result-page">
@@ -55,13 +54,14 @@ export default function ResultPage() {
       <section className="versus">
         <div>
           <Avatar name={ME.nickname} size={40} />
-          <div><strong>{ME.nickname}</strong> <span className="muted">{LANG_LABEL[ME.lang]} · {myScore}문제</span><small className="num">보낸 공격 3점 · 받은 공격 {received + 2}점 · 상쇄 2점</small></div>
+          <div><strong>{ME.nickname}</strong> <span className="muted">{LANG_LABEL[ME.lang]} · {myScore}문제</span><small className="num">보낸 공격 {ATTACK_TOTALS.me.sent}점 · 받은 공격 {ATTACK_TOTALS.me.received}점 · 상쇄 {ATTACK_TOTALS.me.cancelled}점</small></div>
         </div>
         <div>
           <Avatar name={OPPONENT.nickname} size={40} />
-          <div><strong>{OPPONENT.nickname}</strong> <span className="muted">{LANG_LABEL[OPPONENT.lang]} · {oppScore}문제</span><small className="num">보낸 공격 5점 · 받은 공격 2점 · 상쇄 1점</small></div>
+          <div><strong>{OPPONENT.nickname}</strong> <span className="muted">{LANG_LABEL[OPPONENT.lang]} · {oppScore}문제</span><small className="num">보낸 공격 {ATTACK_TOTALS.opponent.sent}점 · 받은 공격 {ATTACK_TOTALS.opponent.received}점 · 상쇄 {ATTACK_TOTALS.opponent.cancelled}점</small></div>
         </div>
       </section>
+      <p className="muted small-text">공격 점수는 상쇄 전 기준이에요.</p>
 
       <Panel title={`${REPORT.problemNo}번 문제에서 시간 초과가 난 이유`} side={<Link to={`/replay/${matchId}`} className="link">다시 보기에서 비교 <Icon name="arrowRight" size={14} /></Link>} className="report-card">
         <div className="solution-compare">
