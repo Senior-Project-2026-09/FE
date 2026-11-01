@@ -55,6 +55,11 @@ export const STATEMENTS: Record<number, Statement> = {
   3: statement({ summary: ['카드 N장과 질의 M개가 주어져요. 각 수가 카드에 있는지 구하세요.'], tag: '이분 탐색', sampleIn: '3 2\n1 3 5\n3 4\n', sampleOut: '1 0\n', starter: 'import sys\nfrom bisect import bisect_left\ninput = sys.stdin.readline\nn, m = map(int, input().split())\na = sorted(map(int, input().split()))\nanswer = []\nfor x in map(int, input().split()):\n    i = bisect_left(a, x)\n    answer.append(int(i < n and a[i] == x))\nprint(*answer)\n' }),
   4: statement({ summary: ['미로의 시작점에서 도착점까지 가는 최단 거리를 구하세요.'], tag: 'BFS', sampleIn: '2 2\n..\n..\n', sampleOut: '2\n' }),
   5: statement({ summary: ['수열에서 가장 긴 증가 부분 수열의 길이를 구하세요.'], tag: 'LIS', sampleIn: '6\n10 20 10 30 20 50\n', sampleOut: '4\n' }),
+  6: statement({ summary: ['괄호 문자열이 올바른지 검사하세요.'], tag: '스택', sampleIn: '(())\n', sampleOut: 'YES\n' }),
+};
+
+export const PRACTICE_STATEMENT: Record<string, number> = {
+  prb_prefix_sum: 1, prb_two_sum_count: 2, prb_number_card: 3, prb_maze: 4, prb_lis: 5, prb_bracket: 6,
 };
 
 // 경기 결과 (대결 이벤트와 같은 경기)

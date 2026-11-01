@@ -482,6 +482,21 @@ form.entry > .btn { margin-top: 0; }
 .profile-card > div:nth-child(2) small { display: block; color: var(--muted); }
 .profile-card .kpi-strip > div:first-child { padding-left: 0; border-left: 0; }
 
+.title-link:hover strong { color: var(--blue); }
+.row-actions { min-width: 118px; }
+.row-actions .btn { opacity: 0; transition: opacity .12s; }
+.data-table tr:hover .row-actions .btn, .row-actions .btn:focus-visible { opacity: 1; }
+@media (hover: none) { .row-actions .btn { opacity: 1; } }
+.auth-switch { justify-self: center; }
+.practice-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0 20px; border-bottom: 1px solid var(--border); }
+.level-select { display: flex; }
+.level-select button { flex: 1; justify-content: center; }
+.level-select button:disabled { color: var(--control); cursor: not-allowed; }
+.level-note { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
+.practice-sub { display: flex; align-items: center; gap: 4px; padding: 9px 16px; }
+.practice-sub small { margin-left: auto; color: var(--muted); }
+.console-tabs strong { display: flex; align-items: center; font-weight: 600; }
+
 /* 태블릿 */
 @media (max-width: 1180px) {
   .page-grid.sidebar-right { grid-template-columns: 1fr; gap: 32px; }

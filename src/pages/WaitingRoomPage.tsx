@@ -99,6 +99,7 @@ export default function WaitingRoomPage() {
             <li className={joined ? 'now' : ''}><strong>방장이 경기 시작을 눌러요</strong><small>두 사람 모두 바로 문제 화면으로 이동해요.</small></li>
           </ol>
         </section>
+        {!joined && <Link to="/practice" className="link">기다리는 동안 연습 문제 풀기 <Icon name="arrowRight" size={14} /></Link>}
         <Link to={`/result/${RECENT_MATCHES[0].matchId}`} className="aside-link">지난 경기 리포트 보기<Icon name="arrowRight" size={14} /></Link>
       </aside>
     </div>

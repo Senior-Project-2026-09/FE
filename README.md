@@ -17,7 +17,7 @@ src/
 ├── battle/          서버 이벤트로 대결 화면 상태를 만드는 reducer
 ├── components/      공통 셸, 아이콘, UI 조각
 ├── mock/            서버 연결 전 샘플 데이터 (API 연결 후 삭제)
-├── pages/           화면 14개
+├── pages/           화면 16개
 ├── styles/app.css   Figma 라이트 화면 토큰과 스타일
 └── App.tsx          라우트
 ```
@@ -26,7 +26,8 @@ src/
 
 | 화면 | 경로 |
 | --- | --- |
-| 초기화면 · 온보딩 · 로그인 | `/welcome` · `/onboarding` · `/login` |
+| 초기화면 · 온보딩 · 로그인·회원가입 · 닉네임 설정 | `/welcome` · `/onboarding` · `/login` · `/login/nickname` |
+| 연습 풀이 | `/practice/prb_two_sum_count` · `?attack=2` |
 | 로비 · 방 만들기 | `/` |
 | 대기실 · 상대 입장 | `/rooms/482917` · `/rooms/482917?joined=1` |
 | 대결 (시작 · 초반 · 중반 · 공격 도착) | `/battle/482917?scene=start` · `early` · `mid` · `attack` |

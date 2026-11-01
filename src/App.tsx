@@ -4,8 +4,10 @@ import BattlePage from './pages/BattlePage';
 import LobbyPage from './pages/LobbyPage';
 import LoginPage from './pages/LoginPage';
 import MyRecordsPage from './pages/MyRecordsPage';
+import NicknameSetupPage from './pages/NicknameSetupPage';
 import OnboardingPage from './pages/OnboardingPage';
 import PracticePage from './pages/PracticePage';
+import PracticeSolvePage from './pages/PracticeSolvePage';
 import ProblemAdminPage from './pages/ProblemAdminPage';
 import ProfileEditPage from './pages/ProfileEditPage';
 import ReplayPage from './pages/ReplayPage';
@@ -22,7 +24,9 @@ export default function App() {
         <Route path="/welcome" element={<WelcomePage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/login/nickname" element={<NicknameSetupPage />} />
         <Route path="/battle/:roomCode" element={<BattlePage />} />
+        <Route path="/practice/:problemId" element={<PracticeSolvePage />} />
         <Route element={<AppShell />}>
           <Route path="/" element={<LobbyPage />} />
           <Route path="/rooms/:roomCode" element={<WaitingRoomPage />} />

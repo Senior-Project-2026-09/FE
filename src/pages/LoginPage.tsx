@@ -11,6 +11,7 @@ const LEVELS = [
 export default function LoginPage() {
   const navigate = useNavigate();
   const [emailOpen, setEmailOpen] = useState(false);
+  const [signup, setSignup] = useState(false);
   const [rulesOpen, setRulesOpen] = useState(false);
 
   return (
@@ -20,7 +21,7 @@ export default function LoginPage() {
         <h1 className="solo-title">정답이 공격이 되는<br />1:1 알고리즘 대결</h1>
 
         <div className="stack-8">
-          <button type="button" className="btn primary block" onClick={() => navigate('/')}>
+          <button type="button" className="btn primary block" onClick={() => navigate('/login/nickname')}>
             <Icon name="github" />GitHub로 계속하기
           </button>
           <button type="button" className="btn block" onClick={() => setEmailOpen((v) => !v)} aria-expanded={emailOpen}>
@@ -31,9 +32,12 @@ export default function LoginPage() {
         {emailOpen && (
           <form className="form-stack" onSubmit={(e) => { e.preventDefault(); navigate('/'); }}>
             <label>이메일<input type="email" required autoComplete="email" /></label>
-            <label>비밀번호<input type="password" required minLength={8} autoComplete="current-password" aria-describedby="pw-rule" /></label>
+            {signup && <label>닉네임<input required minLength={2} maxLength={12} autoComplete="nickname" aria-describedby="nick-rule" /></label>}
+            {signup && <p id="nick-rule" className="hint">한글·영문·숫자 2~12자</p>}
+            <label>비밀번호<input type="password" required minLength={8} autoComplete={signup ? 'new-password' : 'current-password'} aria-describedby="pw-rule" /></label>
             <p id="pw-rule" className="hint">비밀번호는 8자 이상이에요.</p>
-            <button type="submit" className="btn dark block">로그인</button>
+            <button type="submit" className="btn dark block">{signup ? '회원가입' : '로그인'}</button>
+            <button type="button" className="link-button auth-switch" onClick={() => setSignup((v) => !v)}>{signup ? '이미 계정이 있어요. 로그인' : '계정이 없어요. 회원가입'}</button>
           </form>
         )}
 
