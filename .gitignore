@@ -28,3 +28,6 @@ dist-ssr
 .env.*
 !.env.example
 Thumbs.db
+
+# design check output
+.taste-skill
